@@ -5,7 +5,8 @@
 }
 
 :root {
-    --navHeight: 35px;
+    --navHeight: 90px;
+    --sideMargin: 16px;
 }
 
 body {
@@ -17,73 +18,105 @@ body {
     margin-top: var(--navHeight);   
 }
 
-nav {
-    height: var(--navHeight);  
-    background: red;
-    position: fixed;
-    width: 100vw;
-    top: 0;
-}
-
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+nav.vNav {  
+    height: var(--navHeight);      
+    background: red;
+    position: fixed;
+    width: 100vw;
+    top: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    opacity: 0;
-    background: green;
-    height: 100vh;
-    transition: opacity  .3s;
 }
 
-#togglerCheck {
-    opacity: 0;
-    position: absolute;
-    z-index: 200;
-}
-
-#togglerCheck:checked + ul {  
-    opacity: 1;
-    
+#navLogo {
+    margin-left: var(--sideMargin)
 }
 
 #navToggler {
     width: 25px;
-    height: 25px;
-    position: absolute;
+    height: 17px;
     z-index: 100;
 }
 
+.toggler {
+    position: absolute;
+    right: var(--sideMargin);
+}
+
 .navLines .navLine {
-    --lineHeight: 2px;
-    width: 25px;
+    --lineHeight: 3px;
+    width: 100%;
     height: var(--lineHeight);
     position: absolute;
 }
 
 .navLines .navLine:nth-child(1) {
-    background: #b1a1a4;
+    background: #fff;
     top: 0;
 }
 
 .navLines .navLine:nth-child(2) {
-    background: rgb(43, 69, 216);
-    top: calc(50% - (var(--lineHeight)/2));    
-    transform: translate(0, -50%);
+    background: #000;
+    top: calc(50% - (var(--lineHeight) / 2));  
 }
 
 .navLines .navLine:nth-child(3) {
-    background: blue;
-    top: 100%; 
+    background: #fff;
+    bottom: 0; 
+}
+
+#togglerCheck {
+    opacity: 0;
+    z-index: 200;
+}
+
+#togglerCheck:checked + ul {  
+    opacity: 1;    
+}
+
+.vNav ul {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    background: green;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity  .3s;  
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (min-width: 769px) {
-    #togglerCheck {
+    #navToggler {
         display: none;
+    }
+    .vNav ul {
+        flex-direction: row;
+        opacity: 1;
+        height: 100%;
+        transition: none;
     }
 }
